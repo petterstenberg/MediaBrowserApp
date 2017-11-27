@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import se.petterstenberg.mediabrowserapp.models.submodels.Program;
+import se.petterstenberg.mediabrowserapp.models.submodels.ProgramCategory;
 
 @SuppressWarnings("ConstantConditions")
 public class DetailActivity extends AppCompatActivity {
@@ -70,6 +71,8 @@ public class DetailActivity extends AppCompatActivity {
         mDescriptionTextView.setText(program.getDescription());
         mChannelTextView.setText(program.getChannel().getName());
         mEditorTextView.setText(program.getResponsibleeditor());
-        mCategoryTextView.setText(program.getProgramCategory().getName());
+
+        ProgramCategory programCategory = program.getProgramCategory();
+        mCategoryTextView.setText(programCategory != null ? programCategory.getName() : "");
     }
 }
