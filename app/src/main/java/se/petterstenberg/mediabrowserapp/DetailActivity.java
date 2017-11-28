@@ -17,6 +17,10 @@ import butterknife.ButterKnife;
 import se.petterstenberg.mediabrowserapp.models.submodels.Program;
 import se.petterstenberg.mediabrowserapp.models.submodels.ProgramCategory;
 
+/**
+ * The activity that is shown when a user clicks a list item in the {@link MainActivity}.
+ */
+
 @SuppressWarnings("ConstantConditions")
 public class DetailActivity extends AppCompatActivity {
 
@@ -66,11 +70,14 @@ public class DetailActivity extends AppCompatActivity {
 
         Program program = new Gson().fromJson(programJsonString, Program.class);
 
-        Picasso.with(this).load(program.getProgramimagewide()).into(mProgramImageView);
+        // If this would have been a bigger project I would have used a more declarative approach here,
+        // wrapping the image handling in some kind of ImageLoader interface.
+        Picasso.with(this).load(program.getProgramImageWide()).into(mProgramImageView);
+
         mTitleTextView.setText(program.getName());
         mDescriptionTextView.setText(program.getDescription());
         mChannelTextView.setText(program.getChannel().getName());
-        mEditorTextView.setText(program.getResponsibleeditor());
+        mEditorTextView.setText(program.getResponsibleEditor());
 
         ProgramCategory programCategory = program.getProgramCategory();
         mCategoryTextView.setText(programCategory != null ? programCategory.getName() : "");

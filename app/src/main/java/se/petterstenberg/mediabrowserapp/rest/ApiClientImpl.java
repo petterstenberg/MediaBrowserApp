@@ -3,8 +3,6 @@ package se.petterstenberg.mediabrowserapp.rest;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.google.gson.Gson;
-
 import java.io.IOException;
 
 import okhttp3.Cache;
@@ -20,6 +18,8 @@ import se.petterstenberg.mediabrowserapp.models.ProgramsResponse;
 
 public class ApiClientImpl implements ApiClient {
 
+    private static final String SR_API_BASE_URL = "http://api.sr.se";
+
     private final ApiService mService;
     private final Context mContext;
 
@@ -27,9 +27,9 @@ public class ApiClientImpl implements ApiClient {
         mContext = context;
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.sr.se")
+                .baseUrl(SR_API_BASE_URL)
                 .client(createOkHttpClient())
-                .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         mService = retrofit.create(ApiService.class);
@@ -61,16 +61,18 @@ public class ApiClientImpl implements ApiClient {
     }
 
     @Override
-    public void getPrograms(int page, final Callback<ProgramsResponse> callback) {
+    public void getPrograms(int page, @NonNull final Callback<ProgramsResponse> callback) {
+
         Call<ProgramsResponse> call = mService.getPrograms(page);
+
         call.enqueue(new retrofit2.Callback<ProgramsResponse>() {
             @Override
-            public void onResponse(Call<ProgramsResponse> call, Response<ProgramsResponse> response) {
+            public void onResponse(@NonNull Call<ProgramsResponse> call, Response<ProgramsResponse> response) {
                 callback.onSuccess(response.body());
             }
 
             @Override
-            public void onFailure(Call<ProgramsResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<ProgramsResponse> call, Throwable t) {
                 callback.onFailure(t);
             }
         });

@@ -1,6 +1,7 @@
 package se.petterstenberg.mediabrowserapp;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,8 +19,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import se.petterstenberg.mediabrowserapp.models.submodels.Program;
 
+/**
+ * Adapter class handling items on first page.
+ */
+
 @SuppressWarnings("unchecked")
-public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.ViewHolder>{
+public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHolder>{
 
     private List<Program> mPrograms = new ArrayList<>();
     private Context mContext;
@@ -27,10 +32,10 @@ public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.ViewHo
 
     @SuppressWarnings("unchecked")
     public interface Listener {
-        void onItemClicket(Program program, Pair<View, String>... sharedElements);
+        void onItemClicked(Program program, Pair<View, String>... sharedElements);
     }
 
-    public ProgramsAdapter(Context context, Listener listener) {
+    public ProgramAdapter(Context context, Listener listener) {
         mContext = context;
         mListener = listener;
     }
@@ -48,14 +53,14 @@ public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.ViewHo
 
         // If this would have been a bigger project I would have used a more declarative approach here,
         // wrapping the image handling in some kind of ImageLoader interface, that I would inject.
-        Picasso.with(mContext).load(program.getProgramimagewide()).into(holder.mThumbnail);
+        Picasso.with(mContext).load(program.getProgramImageWide()).into(holder.mThumbnail);
 
         holder.mTitle.setText(program.getName());
         holder.mDescription.setText(program.getDescription());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.onItemClicket(program,
+                mListener.onItemClicked(program,
                         Pair.create((View)holder.mThumbnail, DetailActivity.VIEW_NAME_PROGRAM_IMAGE),
                         Pair.create((View)holder.mTitle, DetailActivity.VIEW_NAME_PROGRAM_TITLE),
                         Pair.create((View)holder.mDescription, DetailActivity.VIEW_NAME_PROGRAM_DESCRIPTION));
@@ -68,7 +73,7 @@ public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.ViewHo
         return mPrograms.size();
     }
 
-    public void addPrograms(List<Program> programs){
+    public void addPrograms(@NonNull List<Program> programs){
         mPrograms.addAll(programs);
 
         notifyDataSetChanged();

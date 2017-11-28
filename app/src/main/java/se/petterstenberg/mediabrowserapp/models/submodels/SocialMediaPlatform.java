@@ -10,14 +10,14 @@ public class SocialMediaPlatform {
     private String mPlatform;
 
     @SerializedName("platformurl")
-    private String mPlatformurl;
+    private String mPlatformUrl;
 
     public String getPlatform() {
         return mPlatform;
     }
 
-    public String getPlatformurl() {
-        return mPlatformurl;
+    public String getPlatformUrl() {
+        return mPlatformUrl;
     }
 
 }

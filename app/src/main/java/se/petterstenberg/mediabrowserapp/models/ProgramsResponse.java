@@ -7,6 +7,9 @@ import java.util.List;
 import se.petterstenberg.mediabrowserapp.models.submodels.Pagination;
 import se.petterstenberg.mediabrowserapp.models.submodels.Program;
 
+/**
+ * The root response model for fetching all programs on the start page.
+ */
 public class ProgramsResponse {
 
     @SerializedName("copyright")

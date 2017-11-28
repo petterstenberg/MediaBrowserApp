@@ -9,7 +9,7 @@ import java.util.List;
 public class Program {
 
     @SerializedName("archived")
-    private Boolean mArchived;
+    private boolean mArchived;
 
     @SerializedName("channel")
     private Channel mChannel;
@@ -21,13 +21,13 @@ public class Program {
     private String mEmail;
 
     @SerializedName("hasondemand")
-    private Boolean mHasondemand;
+    private boolean mHasOnDemand;
 
     @SerializedName("haspod")
-    private Boolean mHaspod;
+    private boolean mHasPod;
 
     @SerializedName("id")
-    private Long mId;
+    private long mId;
 
     @SerializedName("name")
     private String mName;
@@ -39,36 +39,36 @@ public class Program {
     private ProgramCategory mProgramCategory;
 
     @SerializedName("programimage")
-    private String mProgramimage;
+    private String mProgramImage;
 
     @SerializedName("programimagetemplate")
-    private String mProgramimagetemplate;
+    private String mProgramImageTemplate;
 
     @SerializedName("programimagetemplatewide")
-    private String mProgramimagetemplatewide;
+    private String mProgramImageTemplateWide;
 
     @SerializedName("programimagewide")
-    private String mProgramimagewide;
+    private String mProgramImageWide;
 
     @SerializedName("programslug")
-    private String mProgramslug;
+    private String mProgramSlug;
 
     @SerializedName("programurl")
-    private String mProgramurl;
+    private String mProgramUrl;
 
     @SerializedName("responsibleeditor")
-    private String mResponsibleeditor;
+    private String mResponsibleEditor;
 
     @SerializedName("socialimage")
-    private String mSocialimage;
+    private String mSocialImage;
 
     @SerializedName("socialimagetemplate")
-    private String mSocialimagetemplate;
+    private String mSocialImageTemplate;
 
     @SerializedName("socialmediaplatforms")
     private List<SocialMediaPlatform> mSocialMediaPlatforms;
 
-    public Boolean getArchived() {
+    public boolean isArchived() {
         return mArchived;
     }
 
@@ -84,15 +84,15 @@ public class Program {
         return mEmail;
     }
 
-    public Boolean getHasondemand() {
-        return mHasondemand;
+    public boolean hasOnDemand() {
+        return mHasOnDemand;
     }
 
-    public Boolean getHaspod() {
-        return mHaspod;
+    public boolean hasPod() {
+        return mHasPod;
     }
 
-    public Long getId() {
+    public long getId() {
         return mId;
     }
 
@@ -108,40 +108,40 @@ public class Program {
         return mProgramCategory;
     }
 
-    public String getProgramimage() {
-        return mProgramimage;
+    public String getProgramImage() {
+        return mProgramImage;
     }
 
-    public String getProgramimagetemplate() {
-        return mProgramimagetemplate;
+    public String getProgramImageTemplate() {
+        return mProgramImageTemplate;
     }
 
-    public String getProgramimagetemplatewide() {
-        return mProgramimagetemplatewide;
+    public String getProgramImageTemplateWide() {
+        return mProgramImageTemplateWide;
     }
 
-    public String getProgramimagewide() {
-        return mProgramimagewide;
+    public String getProgramImageWide() {
+        return mProgramImageWide;
     }
 
-    public String getProgramslug() {
-        return mProgramslug;
+    public String getProgramSlug() {
+        return mProgramSlug;
     }
 
-    public String getProgramurl() {
-        return mProgramurl;
+    public String getProgramUrl() {
+        return mProgramUrl;
     }
 
-    public String getResponsibleeditor() {
-        return mResponsibleeditor;
+    public String getResponsibleEditor() {
+        return mResponsibleEditor;
     }
 
-    public String getSocialimage() {
-        return mSocialimage;
+    public String getSocialImage() {
+        return mSocialImage;
     }
 
-    public String getSocialimagetemplate() {
-        return mSocialimagetemplate;
+    public String getSocialImageTemplate() {
+        return mSocialImageTemplate;
     }
 
     public List<SocialMediaPlatform> getSocialMediaPlatforms() {
